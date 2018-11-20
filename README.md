@@ -1,7 +1,7 @@
-# Dependency Injection Proof of concept
+#Dependency Injection Proof of concept
 This project is a simple proof of concept for using Dependency Injection with an Azure Function, .net core console app, class library, with MS unit test.
 
-# Getting started
+#Getting started
 Clone or download the source code
 
 Open ..\DIProofOfConcept\DIProofOfConcept\DiProofOfConcept.sln in Visual Studio (I have only tested this in VS 2017 and make no promises for backward compatibility)
@@ -27,9 +27,7 @@ Enter this for the post url: http://localhost:7071/api/Function1
 In the body tab, enter the following json text:
 
 {
-
 	"name": "Kathy"
-
 }
 
 Click the send button.
