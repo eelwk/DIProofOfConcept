@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -23,15 +22,18 @@ namespace FunctionApp
             log.LogInformation("C# HTTP trigger function processed a request.");
 
             string name = req.Query["name"];
-            name = primaryInterface.ThisIsAMethod("hello", "kathy");
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             name = name ?? data?.name;
 
-            return name != null
-                ? (ActionResult)new OkObjectResult($"Hello, {name}")
-                : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+            if (name == null) return new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+
+            else
+            {
+                name = primaryInterface.ThisIsAMethod("hello", name);
+                return (ActionResult)new OkObjectResult($"Hello, {name}");                    
+            }           
         }
     }
 }
